@@ -1,7 +1,7 @@
 import { useState } from "react";
 import WeatherStat from "./WeatherStat";
 
-const WatherContainer = ({ weather }) => {
+const WeatherContainer = ({ weather }) => {
 
   const [isCelsius, setIsCelsius] = useState(true)
 
@@ -40,9 +40,6 @@ const WatherContainer = ({ weather }) => {
     setIsCelsius(!isCelsius)
   }
 
-  console.log(changeUnitTemp(weather.main.temp))
-  console.log(weather);
-
   return (
     <section
       className="text-center gap-5 grid"
@@ -56,7 +53,7 @@ const WatherContainer = ({ weather }) => {
           <h4 className="col-span-2 text-lg capitalize">{weather.weather[0].description}</h4>
           <span className="text-5xl">{changeUnitTemp(weather.main.temp)}</span>
           <picture>
-            <img src={weatherIcons[weather.weather[0].icon]} alt="" />
+            <img src={weatherIcons[weather.weather[0].icon]} alt={weather.weather[0].description} />
           </picture>
         </article>
         {/* seccion inferior */}
@@ -77,4 +74,4 @@ const WatherContainer = ({ weather }) => {
   );
 };
 
-export default WatherContainer;
+export default WeatherContainer;
